@@ -25,14 +25,14 @@ class TwinSVMClassifier(BaseEstimator, ClassifierMixin):
         self.kernel_param=kernel_param
         
     def fit(self, X, Y):
-        assert (type(self.Epsilon1) in [float,int,long])
-        assert (type(self.Epsilon2) in [float,int,long])
-        assert (type(self.C1) in [float,int,long])
-        assert (type(self.C2) in [float,int,long])
-        assert (type(self.regulz1) in [float,int,long])
-        assert (type(self.regulz2) in [float,int,long])
+        assert (type(self.Epsilon1) in [float,int])
+        assert (type(self.Epsilon2) in [float,int])
+        assert (type(self.C1) in [float,int])
+        assert (type(self.C2) in [float,int])
+        assert (type(self.regulz1) in [float,int])
+        assert (type(self.regulz2) in [float,int])
         assert (self.fuzzy in [0,1])
-        assert (type(self.kernel_param) in [float,int,long])
+        assert (type(self.kernel_param) in [float,int])
         assert (self.kernel_type in [0,1,2,3])
         ####################fill in here
         # mean -centering, doing std 

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.datasets import make_moons, make_circles, make_classification
 from sklearn.neighbors import KNeighborsClassifier
@@ -16,25 +16,12 @@ from TVSVM import *
 
 h = .02  # step size in the mesh
 params3 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':0,'kernel_param': 1,'fuzzy' :0}
-#params4 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':0,'kernel_param': 1,'fuzzy' :1}
-#params5 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':1,'kernel_param': 1,'fuzzy' :0}
-#params6 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':1,'kernel_param': 1,'fuzzy' :1}
-#params7 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':2,'kernel_param': 2,'fuzzy' :0}
-#params8 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':2,'kernel_param': 2,'fuzzy' :1}
 params9 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':3,'kernel_param': 2,'fuzzy' :0}
 params10 = {'Epsilon1': 0.1, 'Epsilon2': 0.1, 'C1': 1, 'C2': 1,'kernel_type':3,'kernel_param': 2,'fuzzy' :1}
 
-# names = ["Nearest N", "Lin SVM", "RBF SVM", "Decision T",
-#          "RF", "AdaBoost", "Naive Bayes", "LDA",
-#          "Quadratic DA","Twin","Twin f",
-#          "Twin LK","Twin LK f","Twin p","Twin p fuzzy",
-#          "Twin rbf","Twin rbf f"]
 names = ["Nearest N", "Lin SVM", "RBF SVM", "Decision T",
          "RF", "AdaBoost", "Naive Bayes", "LDA",
          "Quadratic DA","Twin","Twin rbf","Twin rbf f"]
-# names = ["Twin","Twin f",
-#          "Twin LK","Twin LK f","Twin p","Twin p fuzzy",
-#          "Twin rbf","Twin rbf f"]
 classifiers = [
     KNeighborsClassifier(3),
     SVC(kernel="linear", C=0.025),
@@ -48,18 +35,9 @@ classifiers = [
     TwinSVMClassifier(**params3),
     TwinSVMClassifier(**params9),
     TwinSVMClassifier(**params10),]
-# classifiers = [
-#     TwinSVMClassifier(**params3),
-#     TwinSVMClassifier(**params4),
-#     TwinSVMClassifier(**params5),
-#     TwinSVMClassifier(**params6),
-#     TwinSVMClassifier(**params7),
-#     TwinSVMClassifier(**params8),
-#     TwinSVMClassifier(**params9),
-#     TwinSVMClassifier(**params10),]
 
 X, y = make_classification(n_features=2, n_redundant=0, n_informative=2,
-                           random_state=1, n_clusters_per_class=1,n_classes=3)
+                           random_state=1, n_clusters_per_class=1)#,n_classes=3)
 rng = np.random.RandomState(2)
 X += 2 * rng.uniform(size=X.shape)
 linearly_separable = (X, y)
